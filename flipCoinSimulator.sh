@@ -21,4 +21,15 @@ fi
 if [ $heads -eq $tails ]
 then
 	echo "it's a tie " $heads $tails
+	while [ $(( $heads-$tails )) -ne 2 ]
+	do
+		if [ $(( RANDOM%2 )) -eq 0 ]
+		then
+			((heads++))
+		else
+			((tails++))
+		fi
+	done
 fi
+echo "heads " $heads
+echo "tails " $tails
