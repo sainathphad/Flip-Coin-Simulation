@@ -1,7 +1,7 @@
 #! /bin/bash
 heads=0
 tails=0
-for (( i=0; i<1000; i++ ))
+while [ $heads -lt 21 ] && [ $tails -lt 21 ]
 do
 	if [ $(( RANDOM%2 )) -eq 0 ]
 	then
@@ -10,5 +10,15 @@ do
 		((tails++))
 	fi
 done
-echo $heads " times Heads won"
-echo $tails " times Tails won"
+if [ $heads -eq 21 ]
+then
+	res=$(( $heads-$tails ))
+	echo "heads=" $heads " Heads won by " $res
+else
+	res1=$(( $tails-$heads ))
+	echo "tails=" $tails " Tails won by " $res1
+fi
+if [ $heads -eq $tails ]
+then
+	echo "it's a tie " $heads $tails
+fi
